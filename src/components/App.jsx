@@ -17,7 +17,6 @@ export const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [totalHits, setTotalHits] = useState(0);
 
   useEffect(() => {
     if (searchQuery === '') {
@@ -38,7 +37,6 @@ export const App = () => {
           return toast.error('По вашему запросу ничего не нашлось');
         }
         setImages(prev => [...prev, ...mapped(response.hits)]);
-        setTotalHits(response.totalHits);
       })
       .catch(error => {
         setError({ error });
@@ -81,6 +79,7 @@ export const App = () => {
       {images.length !== 0 && (
         <ImageGallery images={images} openModal={openModal} />
       )}
+       {error && <p>Error!</p>}
       {isLoading && <Loader />}
       {showButton && <Button nextPage={nextPage} />}
       {showModal && <Modal toggleModal={toggleModal} largeImage={largeImage} />}
