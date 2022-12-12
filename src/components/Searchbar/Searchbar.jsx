@@ -3,7 +3,7 @@ import styles from './Searchbar.module.css';
 import PropTypes from 'prop-types';
 
 export const Searchbar = ({ onSubmit }) => {
-  const { searchQuery, serSearchQuery } = useState(' ');
+  const  [searchQuery, setSearchQuery]  = useState(' ');
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -12,7 +12,7 @@ export const Searchbar = ({ onSubmit }) => {
 
   const handleChange = event => {
     const { value } = event.target;
-    serSearchQuery(value);
+    setSearchQuery(value);
   };
 
   return (

@@ -2,11 +2,9 @@ import { useEffect } from 'react';
 import styles from './Modal.module.css';
 import PropTypes from 'prop-types';
 
-export const Modal = ({ toggleModal, largeImage }) => {
+export const Modal = ({ largeImage, toggleModal }) => {
   useEffect(() => {
-    const handleKeyDown = event => {
-      event.code === 'Escape' && toggleModal();
-    };
+    const handleKeyDown = event => event.code === 'Escape' && toggleModal();
 
     window.addEventListener('keydown', handleKeyDown);
     return () => {
